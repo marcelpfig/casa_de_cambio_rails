@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
     def index
-        render :index
+        @transactions = Transaction.all
     end
 end
