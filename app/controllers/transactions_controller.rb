@@ -17,14 +17,14 @@ class TransactionsController < ApplicationController
         if @transaction.save
           redirect_to @transaction
         else
-          flash[:alert] = 'Você deve informar todos os dados da receita'
+          render :new
         end
     end
     
     private
     
     def transaction_params
-        params.require(:transaction).permit(:amount, :currency, :transaction_type)
+        params.require(:transaction).permit(:amount, :currency, :transaction_type, :quotation)
     end
     
 
