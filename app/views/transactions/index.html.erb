@@ -1,0 +1,18 @@
+<h1>Bem-vindo ao sistema de trocas de moedas</h1>
+
+<%  if @transactions.empty? %>
+     <p>Você ainda não possui transações cadastradas</p>
+    <% else %>
+    <% @transactions.each do |transaction| %>
+    <h3>Identificador</h3>
+    <h3><%= transaction.id %></h3><br>
+    <h3>Quantidade</h3>
+    <h3><%= transaction.amount %></h3><br>
+    <h3>Moeda</h3>
+    <h3><%= transaction.currency_to_ptbr %></h3><br>
+    <h3>Tipo</h3>
+    <h3><%= transaction.transaction_type_to_ptbr %></h3>
+    <h3>Total</h3>
+    <h3><%= transaction.show_total_in_dollars %></h3>
+    <% end %>
+<% end %>
