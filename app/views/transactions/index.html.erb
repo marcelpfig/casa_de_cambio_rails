@@ -5,7 +5,7 @@
     <% else %>
     <% @transactions.each do |transaction| %>
     <h3>Identificador</h3>
-    <h3><%= transaction.id %></h3><br>
+    <h3><%= link_to transaction.id, transaction %></h3><br>
     <h3>Quantidade</h3>
     <h3><%= transaction.amount %></h3><br>
     <h3>Moeda</h3>
