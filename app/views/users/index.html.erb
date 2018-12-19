@@ -1,0 +1,21 @@
+<% flash.each do |name, message| %>
+<p><%= message %></p>
+<% end %>
+
+<h1>Usuários</h1>
+
+<%  if @users.empty? %>
+     <p>Você ainda não possui usuários cadastrados</p>
+    <% else %>
+    <% @users.each do |user| %>
+    <ul><li>Identificador</li>
+    <%= link_to user.id, user %><br>
+    <li>Nome</li>
+    <%= user.name %><br>
+    <li>E-mail</li>
+    <%= user.email %><br>
+    <li>CPF</li>
+    <%= user.cpf %>
+    </ul>
+    <% end %>
+<% end %>

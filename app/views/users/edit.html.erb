@@ -1,0 +1,17 @@
+<% unless @user.errors.blank? %>
+<p>Você deve informar todos os dados do usuário!</p>
+<% end %>
+
+<h3>Editando usuário</h3>
+
+<%= form_for @user do |f| %>
+  <%= f.label :name, 'Nome' %>
+  <%= f.text_field :name %>
+  <%= f.label :email, 'E-mail' %>
+  <%= f.text_field :email %>
+  <%= f.label :cpf, 'CPF' %>
+  <%= f.text_field :cpf %>
+
+
+  <%= f.submit 'Editar' %>
+<% end %>
