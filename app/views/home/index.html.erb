@@ -4,8 +4,14 @@
 
 <h1>Bem-vindo ao sistema de trocas de moedas</h1>
 
+<%= form_tag "/", method: "get" do  %>
+<%= label_tag :currency, 'Filtro por moeda' %>
+<%= select_tag(:currency, options_for_select([ ['Dólar', 'dollar'], ['Real', 'real'] ])) %>
+
+<%= submit_tag 'Filtrar' %>
+
 <%  if @transactions.empty? %>
-     <p>Você ainda não possui transações cadastradas</p>
+     <p>Você ainda não possui transações cadastradas.</p>
     <% else %>
     <% @transactions.each do |transaction| %>
     <ul><li>Identificador</li>
@@ -24,3 +30,5 @@
 <%= link_to 'Registrar transação', new_transaction_path %>
 <%= link_to 'Cadastrar usuário', new_user_path %>
 <%= link_to 'Usuários', users_path %>
+
+<% end %>
