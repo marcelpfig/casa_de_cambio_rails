@@ -25,6 +25,10 @@
     <li>Total</li>
     <%= transaction.show_total_in_dollars %></ul>
     <% end %>
+
+    <h3>Total agregado</h3>
+    <%= "$ #{format('%.2f', @sum)}" %>
+    <br>
 <% end %>
 
 <%= link_to 'Ver todas', transactions_path %>
