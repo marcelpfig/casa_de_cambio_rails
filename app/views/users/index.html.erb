@@ -4,8 +4,8 @@
 
 <h1>Usuários</h1>
 
-<%  if @users.empty? %>
-     <p>Você ainda não possui usuários cadastrados</p>
+<% if @users.empty? %>
+     <p>Nenhum usuário cadastrado</p>
     <% else %>
     <% @users.each do |user| %>
     <ul><li>Identificador</li>
