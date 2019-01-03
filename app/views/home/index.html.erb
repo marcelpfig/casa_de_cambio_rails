@@ -2,38 +2,59 @@
 <p><%= message %></p>
 <% end %>
 
-<h1>Bem-vindo ao sistema de trocas de moedas</h1>
+<div class="ls-box-filter">
+    <form action="" class="ls-form ls-form-inline ls-float-left">
+        <label class="ls-label col-md-8 col-sm-8">
+            <%= form_tag "/", method: "get" do  %>
 
-<%= form_tag "/", method: "get" do  %>
-<%= label_tag :currency, 'Filtro por moeda' %>
-<%= select_tag(:currency, options_for_select([ ['Dólar', 'dollar'], ['Real', 'real'] ])) %>
+            <b class="ls-label-text"><%= label_tag :currency, 'Filtro por moeda' %></b>
 
-<%= submit_tag 'Filtrar' %>
+            <div class="ls-custom-select">
+                <%= select_tag(:currency, options_for_select([ ['Dólar', 'dollar'], ['Real', 'real'] ]), class:"ls-select") %>
+            </div>
+        </label>
+
+        <div class="ls-actions-btn ls-float-right">
+            <%= submit_tag 'Filtrar', class: 'ls-btn' %>
+         </div>
+
+    </form>
+</div>
 
 <%  if @transactions.empty? %>
-     <p>Você ainda não possui transações cadastradas.</p>
+     <div class="ls-alert-info"><p>Você ainda não possui transações cadastradas.</p></div>
     <% else %>
-    <% @transactions.each do |transaction| %>
-    <ul><li>Identificador</li>
-    <%= link_to transaction.id, transaction %><br>
-    <li>Quantidade</li>
-    <%= transaction.amount %><br>
-    <li>Moeda</li>
-    <%= transaction.currency_to_ptbr %><br>
-    <li>Tipo</li>
-    <%= transaction.transaction_type_to_ptbr %><br>
-    <li>Total</li>
-    <%= transaction.show_total_in_dollars %></ul>
-    <% end %>
 
-    <h3>Total agregado</h3>
-    <%= "$ #{format('%.2f', @sum)}" %>
-    <br>
+    <table class="ls-table">
+    <thead>
+        <tr>
+        <th>Identificador</th>
+        <th class="hidden-xs">Quantidade</th>
+        <th>Moeda</th>
+        <th class="hidden-xs">Tipo</th>
+        <th>Total</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @transactions.each do |transaction| %>
+        <tr>
+            <td><%= link_to transaction.id, transaction %></td>
+            <td><%= transaction.amount %></td>
+            <td><%= transaction.currency_to_ptbr %></td>
+            <td><%= transaction.transaction_type_to_ptbr %></td>
+            <td><%= transaction.show_total_in_dollars %></ul></td>
+        </tr>
+        <% end %>
+    </tbody>
+
+    <tfoot>
+    <tr>
+    <td>Total agregado</td>
+    <td><%= "$ #{format('%.2f', @sum)}" %></td>
+    </tr>
+    </tfoot>
+    
 <% end %>
-
-<%= link_to 'Ver todas', transactions_path %>
-<%= link_to 'Registrar transação', new_transaction_path %>
-<%= link_to 'Cadastrar usuário', new_user_path %>
-<%= link_to 'Usuários', users_path %>
 
 <% end %>

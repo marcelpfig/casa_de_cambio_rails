@@ -1,17 +1,30 @@
-<h3><%= @user.name %></h3>
-<h3>E-mail</h3>
-<p><%= @user.email %></p>
-<h3>CPF</h3>
-<p><%= @user.cpf %></p>
-<h3>Endereço</h3>
+<table class="ls-table">
+    <thead>
+    <tr>
+    <th>Nome</th>
+    <th>E-mail</th>
+    <th>CPF</th>
+    <th>Endereço</th>
+    </tr>
+    </thead>
+
+<tbody>
+<tr>
+<td><%= @user.name %></td>
+<td><%= @user.email %></td>
+<td><%= @user.cpf %></td>
 <% if @user.address == nil %>
-<p>Este usuário não tem um endereço cadastrado</p>
+<td>Este usuário não tem um endereço cadastrado</td>
 <% else %>
-<%= @user.address.street %>
+<td><%= @user.address.street %>
 <%= @user.address.neighbourhood %>
 <%= "#{@user.address.city} - #{@user.address.state}" %>
-<%= @user.address.postal_code %>
+<%= @user.address.postal_code %></td>
 <% end %>
+</tbody>
+</table>
 
-<%= link_to 'Voltar', root_path %>
-<%= link_to 'Editar', edit_user_path %>
+<div class="ls-actions-btn">
+<%= link_to 'Voltar', root_path, class: "ls-btn" %>
+<%= link_to 'Editar', edit_user_path, class: "ls-btn" %>
+</div>

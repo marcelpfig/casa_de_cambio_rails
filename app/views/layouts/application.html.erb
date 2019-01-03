@@ -1,15 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html class="ls-theme-wine">
   <head>
-    <title>CasaDeCambioRails</title>
+    <title>Casa de Câmbio</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/3.10.1/stylesheets/locastyle.css">
   </head>
 
   <body>
-    <%= yield %>
+  
+    <div class="ls-topbar ">
+
+  <!-- Barra de Notificações -->
+  <div class="ls-notification-topbar">
+
+    <!-- Links de apoio -->
+    
+
+    <!-- Dropdown com detalhes da conta de usuário -->
+    <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
+      <a href="#" class="ls-ico-user">
+        <img src="#" alt="" />
+        <span class="ls-name">Marcel</span>
+      </a>
+
+      <nav class="ls-dropdown-nav ls-user-menu">
+        <ul>
+          <li><a href="#">User Option 1</a></li>
+          <li><a href="#">User Option 2</a></li>
+          <li><a href="#">User Option 3</a></li>
+          <li><a href="#">Sair</a></li>
+         </ul>
+      </nav>
+    </div>
+  </div>
+
+  <span class="ls-show-sidebar ls-ico-menu"></span>
+
+  <a href="#"  class="ls-go-next"><span class="ls-text">Voltar à lista de serviços</span></a>
+
+  <!-- Nome do produto/marca com sidebar -->
+    <h1 class="ls-brand-name">
+      <a href="/" class="ls-ico-earth">
+        <small>A mais simples casa de câmbio já feita em Rails</small>
+        Casa de Câmbio
+      </a>
+    </h1>
+
+  <!-- Nome do produto/marca sem sidebar quando for o pre-painel  -->
+</div>
+
+
+    <aside class="ls-sidebar">
+
+  <div class="ls-sidebar-inner">
+      <a href="#"  class="ls-go-prev"><span class="ls-text">Voltar à lista de serviços</span></a>
+
+      <nav class="ls-menu">
+        <ul>
+
+          <li><%= link_to 'Home', root_path, class: "ls-ico-home" %></li>
+
+          <li>
+          <a href="#" class="ls-ico-menu" title="Transações">Transações</a>
+          <ul>
+          <li><%= link_to 'Ver todos Transações', transactions_path, class: "ls-ico-list3" %></li>
+          <li><%= link_to 'Registrar transação', new_transaction_path, class: "ls-ico-plus" %></li>
+          <li></li>
+          </ul>
+          </li>
+
+
+          <li>
+          <a href="#" class="ls-ico-users" title="usuários">Usuários</a>
+          <ul>
+          <li><%= link_to 'Ver todos Usuários', users_path, class:"ls-ico-users" %></li>
+          <li><%= link_to 'Cadastrar usuário', new_user_path, class:"ls-ico-user-add" %></li>
+          <li></li>
+          </ul>
+          </li>
+
+        </ul>
+      </nav>
+
+
+  </div>
+</aside>
+
+
+    <main class="ls-main ">
+      <div class="container-fluid">
+        <h1 class="ls-title-intro ls-ico-home">Bem-vindo ao sistema de trocas de moedas</h1>
+
+        <%= yield %>
+
+      </div>
+    </main>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//assets.locaweb.com.br/locastyle/3.10.1/javascripts/locastyle.js"></script>
   </body>
 </html>

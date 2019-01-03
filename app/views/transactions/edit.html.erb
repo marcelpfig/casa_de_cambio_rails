@@ -2,17 +2,36 @@
 <p>Você deve informar todos os dados da transação!</p>
 <% end %>
 
-<h3>Editando transação</h3>
+<h3>Editando transação</h3><br>
 
+<div class="ls-form ls-form-horizontal row">
 <%= form_for @transaction do |f| %>
-  <%= f.label :amount, 'Quantidade' %>
+<fieldset>
+<label class="ls-label col-md-4 col-xs-12">
+  <b class="ls-label-text"><%= f.label :amount, 'Quantidade' %></b>
   <%= f.text_field :amount %>
-  <%= f.label :currency, 'Moeda' %>
-  <%= f.select(:currency, options_for_select([ ['Dólar', 'dollar'], ['Real', 'real'] ])) %>
-  <%= f.label :quotation, 'Cotação' %>
-  <%= f.text_field :quotation %>
-  <%= f.label :transaction_type, 'Tipo' %>
-  <%= f.select(:transaction_type, options_for_select([ ['Compra', 'buy'], ['Venda', 'sell'] ])) %>
+  </label>
 
-  <%= f.submit 'Editar' %>
+<label class="ls-label col-md-4 col-xs-12">
+  <b class="ls-label-text"><%= f.label :currency, 'Moeda' %></b>
+  <%= f.select(:currency, options_for_select([ ['Dólar', 'dollar'], ['Real', 'real'] ])) %>
+</label>
+
+<label class="ls-label col-md-4 col-xs-12">
+  <b class="ls-label-text"><%= f.label :quotation, 'Cotação' %></b>
+  <%= f.text_field :quotation %>
+</label>
+
+<label class="ls-label col-md-4 col-xs-12">
+  <b class="ls-label-text"><%= f.label :transaction_type, 'Tipo' %></b>
+  <div class="ls-custom-select">
+    <%= f.select(:transaction_type, options_for_select([ ['Compra', 'buy'], ['Venda', 'sell'] ]), class: "ls-select") %>
+  </div>
+</label>
+</fieldset>
+
+<div class="ls-actions-btn">
+  <%= f.submit 'Editar', class: "ls-btn" %>
+</div>
 <% end %>
+</div>

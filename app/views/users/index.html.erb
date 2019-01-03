@@ -5,17 +5,27 @@
 <h1>Usuários</h1>
 
 <% if @users.empty? %>
-     <p>Nenhum usuário cadastrado</p>
+     <div class="ls-alert-info"><p>Nenhum usuário cadastrado</p></div>
     <% else %>
+
+    <table class="ls-table">
+    <thead>
+        <tr>
+        <th>Identificador</th>
+        <th class="hidden-xs">Nome</th>
+        <th>E-mail</th>
+        <th class="hidden-xs">CPF</th>
+        </tr>
+    </thead>
+
+    <tbody>
     <% @users.each do |user| %>
-    <ul><li>Identificador</li>
-    <%= link_to user.id, user %><br>
-    <li>Nome</li>
-    <%= user.name %><br>
-    <li>E-mail</li>
-    <%= user.email %><br>
-    <li>CPF</li>
-    <%= user.cpf %>
-    </ul>
+    <tr>
+    <td><%= link_to user.id, user %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.cpf %></td>
+    </tr>
     <% end %>
+    </tbody>
 <% end %>
